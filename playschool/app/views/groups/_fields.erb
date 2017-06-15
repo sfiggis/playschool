@@ -9,20 +9,24 @@
 
 <h2>Add Kids</h2>
 
-<% f.fields_for :kids do |kid| %>
-  <fieldset>
-    <%= kid.label :name %>
-    <%= kid.text_field :name %>
-  </fieldset>
-  <fieldset>
-    <%= kid.label :age %>
-    <%= kid.number_field :age %>
-  </fieldset>
-  <fieldset>
-    <%= kid.label :notes %>
-    <%= kid.text_area :notes %>
-  </fieldset>
-<% end %>
-
-<br>
+<div class="kids">
+  <% f.fields_for :kids do |kid| %>
+    <div class="kid">
+      <fieldset>
+        <%= kid.label :name %>
+        <%= kid.text_field :name %>
+      </fieldset>
+      <fieldset>
+        <%= kid.label :age %>
+        <%= kid.number_field :age %>
+      </fieldset>
+      <fieldset>
+        <%= kid.label :notes %>
+        <%= kid.text_area :notes %>
+      </fieldset>
+      <br>
+    </div>
+  <% end %>
+</div>
+<%= button_tag "Add Kid", class: 'add-kid' %>
 <%= f.submit %>
