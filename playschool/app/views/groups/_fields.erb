@@ -1,0 +1,28 @@
+<fieldset>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</fieldset>
+<fieldset>
+  <%= f.label :notes %>
+  <%= f.text_area :notes %>
+</fieldset>
+
+<h2>Add Kids</h2>
+
+<% f.fields_for :kids do |kid| %>
+  <fieldset>
+    <%= kid.label :name %>
+    <%= kid.text_field :name %>
+  </fieldset>
+  <fieldset>
+    <%= kid.label :age %>
+    <%= kid.number_field :age %>
+  </fieldset>
+  <fieldset>
+    <%= kid.label :notes %>
+    <%= kid.text_area :notes %>
+  </fieldset>
+<% end %>
+
+<br>
+<%= f.submit %>

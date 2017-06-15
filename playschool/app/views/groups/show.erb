@@ -1,0 +1,13 @@
+<h1>Group: <%= @group.name %></h1>
+
+<h2>Notes</h2>
+
+<%= @group.notes %>
+
+<% unless @group.kids.empty? %>
+  <h2>Kids</h2>
+
+  <% @group.kids.each do |kid| %>
+    Name: <%= kid.name %>, Age: <%= kid.age %>, Notes: <%= kid.notes %>
+  <% end %>
+<% end %>

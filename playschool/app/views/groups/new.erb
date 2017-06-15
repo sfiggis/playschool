@@ -1,0 +1,7 @@
+<h1>Add Group</h1>
+
+<% form_for @group, url_for(:groups, :create), method: 'POST' do |f| %>
+
+  <%= partial 'groups/fields', :object => @group, :locals => { :f => f } %>
+
+<% end %>

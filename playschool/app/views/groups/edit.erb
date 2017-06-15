@@ -1,0 +1,7 @@
+<h1>Edit Group</h1>
+
+<% form_for @group, url_for(:groups, :update, id: @group.id), method: 'PUT' do |f| %>
+
+  <%= partial 'groups/fields', :object => @group, :locals => { :f => f } %>
+
+<% end %>

@@ -2,17 +2,13 @@ Playschool::App.controllers :groups do
 
   layout :application
 
-  before :show, :edit, :update, :destroy do
-    @group = Group.find(params[:id])
-  end
-
-  get :index do
-    @groups = Group.includes(:kids).all
-    render 'index'
+  before :show, :edit, :update do
+    @group = Group.includes(:kids).find(params[:id])
   end
 
   get :new, map: '/groups/new' do
     @group = Group.new
+    @group.kids.new
     render 'new'
   end
 
@@ -38,14 +34,6 @@ Playschool::App.controllers :groups do
       redirect url_for(:groups, :show, id: @group.id)
     else
       redirect url_for(:groups, :edit, id: @group.id)
-    end
-  end
-
-  delete :destroy, map: '/groups/:id' do
-    if @group.delete
-      redirect url_for(:groups, :index)
-    else
-      redirect url_for(:groups, :show, id: @group.id)
     end
   end
 
