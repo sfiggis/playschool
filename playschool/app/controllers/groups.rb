@@ -8,7 +8,7 @@ Playschool::App.controllers :groups do
 
   get :new, map: '/groups/new' do
     @group = Group.new
-    @group.kids.new if @group.kids.empty?
+    @group.kids.new
     render 'new'
   end
 
