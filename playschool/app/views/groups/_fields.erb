@@ -34,15 +34,36 @@
 <script>
 $(document).ready(function() {
   $('#add-kid').click(function() {
-    var $clone = $('.kid').clone();
+    var $clone = $('.kid').last().clone();
     $clone.find('label').each(function() {
       var $attribute = this.getAttribute('for');
       var $digit = $attribute.match(/(\d+)/g);
       var $newAttribute = $attribute.replace($digit, parseInt($digit) + 1);
       this.setAttribute('for', $newAttribute);
     });
-    
-    
+    $clone.find('input').each(function() {
+      var $nameAttribute = this.getAttribute('name');
+      var $idAttribute = this.getAttribute('id');
+      var $digit = $nameAttribute.match(/(\d+)/g);
+      var $newNameAttribute = $nameAttribute.replace($digit, parseInt($digit) + 1);
+      var $newIdAttribute = $idAttribute.replace($digit, parseInt($digit) + 1);
+      this.setAttribute('name', $newNameAttribute);
+      this.setAttribute('id', $newIdAttribute);
+      //debugger;
+      $(this).val("");
+    });
+
+    $clone.find('textarea').each(function() {
+      var $nameAttribute = this.getAttribute('name');
+      var $idAttribute = this.getAttribute('id');
+      var $digit = $nameAttribute.match(/(\d+)/g);
+      var $newNameAttribute = $nameAttribute.replace($digit, parseInt($digit) + 1);
+      var $newIdAttribute = $idAttribute.replace($digit, parseInt($digit) + 1);
+      this.setAttribute('name', $newNameAttribute);
+      this.setAttribute('id', $newIdAttribute);
+      $(this).val("");
+    })
+
     $(".kids").append($clone);
   });
 });
